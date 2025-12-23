@@ -605,7 +605,27 @@
         });
     };
 
-    window.onload = () => { initSnow(); initBalloons(); };
+
+    window.onload = () => {
+    initSnow();
+    initBalloons();
+
+    const params = new URLSearchParams(window.location.search);
+    const urlName = params.get('nombre');
+
+    if (urlName && urlName.trim() !== '') {
+        userName = decodeURIComponent(urlName).toUpperCase();
+
+        const input = document.getElementById('nameInput');
+        if (input) input.value = userName;
+
+        // 👉 SALTA la pantalla del nombre
+        showScreen('journeyScreen');
+    }
+};
+
+
+
 </script>
 
 </body>
